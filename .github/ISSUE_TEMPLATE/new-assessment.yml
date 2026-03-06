@@ -8,7 +8,7 @@ body:
       value: |
         # Before filling the assessment
         
-        blablaba
+        Make sure the method you're about to describe isn't already in NaviDAM. Also, make sure to check our contributing guide (TO COME)
         
         # General description of the method
         
@@ -18,57 +18,295 @@ body:
       description: "Give the name of the method you want to describe"
     validations:
       required: true
-  
   - type: markdown
     attributes:
       value: |
         ## Outcome
         
-        Please fill the values for the outcome
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
-  - type: textarea
-    id: what-happened
-    attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+        Please fill the different values for the outcome
+  - type: dropdown
+    label: "Objective"
+    description: "Describe what's the goal of the method"
+    multiple: true
+    options:
+      - Effect estimation
+      - Causal relationship(s)
+      - Predictive task + interpretability
+      - Detection
+      - Significance and robustness tests
+      - Scenario projection
     validations:
       required: true
   - type: dropdown
-    id: version
+    label: "Estimand"
+    multiple: true
+    options:
+      - ATT
+      - ATE
+      - LATE
+      - CATE
+      - Mediation effects
+      - Oriented link
+      - Risk ratios
+      - Maps & generalisations
+      - Others
+    validations:
+      required: true
+  - type: markdown
     attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
+      value: |
+        ## Data compatibility
+  - type: dropdown
+    label: "Type"
+    multiple: true
+    options:
+      - Spatial only (cross-sectional)
+      - Time-series (one sample)
+      - Panel data (many samples)
     validations:
       required: true
   - type: dropdown
-    id: browsers
+    label: "Type"
+    options:
+      - Handles ≤ 10
+      - ≥ 10
+      - ≥ 100
+    validations:
+      required: true
+  - type: dropdown
+    label: "Handles few samples"
+    options:
+      - Yes CT design
+      - Yes ≤ 10
+      - 10 to 100
+      - No
+    validations:
+      required: true
+  - type: dropdown
+    label: "Handles few samples"
+    options:
+      - Yes
+      - Most do
+      - Most don't
+      - No
+    validations:
+      required: true
+  - type: dropdown
+    label: "Handles missing data"
+    options:
+      - Yes
+      - Partially
+      - "No: requires prelim. correction"
+    validations:
+      required: true
+  - type: dropdown
+    label: "RS-data proven"
+    options:
+      - Yes
+      - Few applications
+      - No
+    validations:
+      required: true
+  - type: markdown
     attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
+      value: "## Assumptions"
+  - type: dropdown
+    label: "Functional form"
+    multiple: true
+    options:
+      - Linear
+      - Quadratic
+      - Non-linear
+      - Additivity
+      - Assumption-free
+      - Rule-based
+      - Log-linear
+      - Inapplicable
+    validations:
+      required: true
+  - type: dropdown
+    label: "No unobserved confounders"
+    options:
+      - Required
+      - Recommended
+      - Desirable
+      - Relaxes assumption
+      - Time-varying OR site-varying
+      - Inapplicable
+    validations:
+      required: true
+  - type: dropdown
+    label: "No interference"
+    multiple: true
+    options:
+      - Required
+      - Recommended
+      - Desirable
+      - Relaxes assumption
+      - Not required
+      - Inapplicable
+    validations:
+      required: true
+  - type: dropdown
+    label: "Well-defined treatments"
+    options:
+      - Required
+      - Recommended
+      - Desirable
+      - Relaxes assumption
+      - Inapplicable
+    validations:
+      required: true
+  - type: dropdown
+    label: "Common support (positivity)"
+    options:
+      - Required
+      - Recommended
+      - Desirable
+      - Relaxes assumption
+      - Inapplicable
+    validations:
+      required: true
+  - type: dropdown
+    label: "Causal Markov Condition"
+    options:
+      - Required
+      - Recommended
+      - Desirable
+      - Relaxes assumption
+      - Inapplicable
+    validations:
+      required: true
+  - type: dropdown
+    label: "Faithfulness"
+    options:
+      - Required
+      - Recommended
+      - Desirable
+      - Relaxes assumption
+      - Inapplicable
+    validations:
+      required: true
+  - type: dropdown
+    label: "IDD"
+    options:
+      - Required
+      - Recommended
+      - Desirable
+      - Relaxes assumption
+      - Inapplicable
+    validations:
+      required: true
+  - type: dropdown
+    label: "Model specific assumptions"
+    multiple: true
+    options:
+      - Parallel trends
+      - Stationarity
+      - Dispersal / reproduction / mortality
+      - Instrument validity
+      - Normality of random effects
+      - No M-O confounding
+      - Good covariate balance
+      - Effect entirely mediated
+      - Cutoff + PO continuity
+      - B/A treatment obs.
+      - Good pretreatment fit
+      - Inapplicable
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: "## Model properties"
+  - type: dropdown
+    label: "Requires explicit processes"
+    options: 
+      - Yes
+      - Optional
+      - Agnostic
+    validations:
+      required: true
+  - type: dropdown
+    label: "Exposure type"
+    multiple: true
+    options:
+      - Binary
+      - Categorical
+      - Continuous / Time-varying
+      - Compositional
+      - Multivariate
+      - Others
+      - All
+    validations:
+      required: true
+  - type: dropdown
+    label: "Number of variables"
+    multiple: true
+    options:
+      - Univariate
+      - Bivariate
+      - Multivariate
+      - High-dimensional (p≫n)
+    validations:
+      required: true
+  - type: dropdown
+    label: "Propagates uncertainty"
+    options:
+      - Inherent capacity
+      - Model-specific tools
+      - Needs model-agnostic propagation
+      - Inapplicable
+    validations:
+      required: true
+  - type: dropdown
+    label: "Handles lag effects"
+    options:
+      - Yes
+      - Possible
+      - No
+    validatons:
+      required: true
+  - type: dropdown
+    label: "Parametric nature"
+    multiple: true
+    options:
+      - Parametric
+      - Semi-parametric
+      - Non-parametric
+      - Rule-based
+      - Inapplicable
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: "## Packages"
+  - type: dropdown
+    label: "Language"
+    multiple: true
+    options:
+      - R
+      - Python
+      - GIS
+      - Others
+      - None
+    validations:
+      required: true
+  - type: dropdown
+    label: "Usage"
+    options:
+      - User-friendly
+      - Technical but well documented
+      - Sparse documentation
+      - Domain-specific skills
+      - Varying
+    validations:
+      required: true
   - type: textarea
-    id: logs
+    id: comments
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
+      label: Additional comments
+      description: Give us any detail you would like on the method you would like to describe
+      placeholder: Tell us about the method!
   - type: checkboxes
     id: terms
     attributes:
