@@ -3,19 +3,9 @@ description: Describe a new method by filling its assessment table
 title: "[New Assessment]: "
 labels: ["bug", "triage"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        # Before filling the assessment
-        
-        Make sure the method you're about to describe isn't already in NaviDAM. Also, make sure to check our contributing guide (TO COME)
-        
-        # General description of the method
-        
   - type: input
-    attributes:
-      label: "Name of the method"
-      description: "Give the name of the method you want to describe"
+    label: "Name of the method"
+    description: "Give the name of the method you want to describe"
     validations:
       required: true
   - type: markdown
